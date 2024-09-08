@@ -7,5 +7,6 @@
   "author": "OrbitKit",
   "files": [
     "**/*"
-  ]
+  ],
+  "nx": {}
 }

@@ -1,0 +1,134 @@
+{
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "targetDefaults": {
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": [
+        "{projectRoot}/$TURBO_DEFAULT$",
+        "{projectRoot}/!CHANGELOG.md",
+        "{projectRoot}/!eslint.config.js",
+        "{projectRoot}/!playwright.config.ts",
+        "{projectRoot}/!e2e/**",
+        "{projectRoot}/!.env.example",
+        "{projectRoot}/.env.production.local",
+        "{projectRoot}/.env.local",
+        "{projectRoot}/.env.production",
+        "{projectRoot}/.env"
+      ],
+      "outputs": ["{workspaceRoot}/dist/**"],
+      "cache": true
+    },
+    "test:e2e": {
+      "dependsOn": ["^build", "build"],
+      "outputs": [
+        "{workspaceRoot}/playwright-report/**",
+        "{workspaceRoot}/test-results/**"
+      ],
+      "inputs": [
+        "{projectRoot}/$TURBO_DEFAULT$",
+        "{projectRoot}/!CHANGELOG.md",
+        "{projectRoot}/!eslint.config.js",
+        "{projectRoot}/!.env.example",
+        "{projectRoot}/.env.test.local",
+        "{projectRoot}/.env.local",
+        "{projectRoot}/.env.test",
+        "{projectRoot}/.env"
+      ],
+      "cache": true
+    },
+    "lint": {
+      "dependsOn": ["^build"],
+      "inputs": ["{projectRoot}/!CHANGELOG.md"],
+      "cache": true
+    },
+    "//#lint": {
+      "inputs": [
+        "{projectRoot}/.commitlintrc.ts",
+        "{projectRoot}/*.ts",
+        "{projectRoot}/*.js",
+        "{projectRoot}/tsconfig.json"
+      ],
+      "cache": true
+    },
+    "typecheck": {
+      "dependsOn": ["^build"],
+      "inputs": ["{projectRoot}/!CHANGELOG.md"],
+      "outputs": ["{workspaceRoot}/*.tsbuildinfo"],
+      "cache": true
+    },
+    "dev": {
+      "dependsOn": ["^build"],
+      "cache": false,
+      "inputs": [
+        "{projectRoot}/$TURBO_DEFAULT$",
+        "{projectRoot}/.env.development.local",
+        "{projectRoot}/.env.local",
+        "{projectRoot}/.env.development",
+        "{projectRoot}/.env"
+      ]
+    },
+    "start": {
+      "dependsOn": ["^build", "build"],
+      "cache": false,
+      "inputs": [
+        "{projectRoot}/$TURBO_DEFAULT$",
+        "{projectRoot}/.env.production.local",
+        "{projectRoot}/.env.local",
+        "{projectRoot}/.env.production",
+        "{projectRoot}/.env"
+      ]
+    },
+    "db:migrate": {
+      "dependsOn": ["db:generate"],
+      "inputs": ["{projectRoot}/drizzle/**"],
+      "cache": true
+    },
+    "db:generate": {
+      "inputs": [
+        "{projectRoot}/src/schema/**",
+        "{projectRoot}/drizzle.config.ts"
+      ],
+      "outputs": ["{workspaceRoot}/drizzle/**"],
+      "cache": true
+    },
+    "db:studio": {
+      "cache": false
+    },
+    "db:check": {
+      "cache": false
+    },
+    "db:migrate:drop": {
+      "cache": false
+    },
+    "db:pull": {
+      "cache": false
+    },
+    "db:push": {
+      "cache": false
+    },
+    "db:up": {
+      "cache": false
+    },
+    "clean": {
+      "cache": false
+    },
+    "//#lint:spell": {
+      "outputs": ["{workspaceRoot}/.cspellcache"],
+      "cache": true
+    },
+    "//#lint:md": {
+      "inputs": ["**/*.md"],
+      "cache": true
+    },
+    "sync": {
+      "cache": false
+    },
+    "build-storybook": {
+      "cache": true
+    },
+    "test-storybook": {
+      "cache": true
+    }
+  },
+  "defaultBase": "main"
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "../../node_modules/nx/schemas/nx-schema.json",
+  "extends": ["//"],
+  "tasks": {
+    "storybook": {
+      "dependsOn": ["^build"],
+      "cache": false,
+      "persistent": true
+    },
+    "build-storybook": {
+      "dependsOn": ["^build"],
+      "outputs": ["{workspaceRoot}/storybook-static/**"],
+      "inputs": [
+        "{projectRoot}/$TURBO_DEFAULT$",
+        "{projectRoot}/!CHANGELOG.md",
+        "{projectRoot}/!eslint.config.js",
+        "{projectRoot}/!tsconfig.build.json"
+      ],
+      "cache": true
+    }
+  }
+}

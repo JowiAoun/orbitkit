@@ -15,5 +15,6 @@
   },
   "volta": {
     "extends": "../../package.json"
-  }
+  },
+  "nx": {}
 }

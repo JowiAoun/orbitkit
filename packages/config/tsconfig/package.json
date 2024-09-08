@@ -12,5 +12,6 @@
     "./react.json",
     "./build.json",
     "./dom.json"
-  ]
+  ],
+  "nx": {}
 }

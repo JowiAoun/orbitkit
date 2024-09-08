@@ -98,5 +98,6 @@
     "vite": "^5.3.4",
     "vite-plugin-dts": "^3.9.1",
     "vite-plugin-external": "^4.3.1"
-  }
+  },
+  "nx": {}
 }

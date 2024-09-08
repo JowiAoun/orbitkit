@@ -26,5 +26,6 @@
   "devDependencies": {
     "@orbitkit/eslint": "workspace:^",
     "@orbitkit/tsconfig": "workspace:^"
-  }
+  },
+  "nx": {}
 }

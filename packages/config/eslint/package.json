@@ -41,5 +41,6 @@
     "@types/eslint-config-prettier": "^6.11.3",
     "@typescript-eslint/utils": "^7.16.1",
     "eslint-plugin-storybook": "^0.8.0"
-  }
+  },
+  "nx": {}
 }
