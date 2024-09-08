@@ -70,5 +70,12 @@
     "typescript": "^5.5.3",
     "yargs": "^17.7.2"
   },
-  "packageManager": "bun@1.1.12"
+  "packageManager": "bun@1.1.12",
+  "trustedDependencies": [
+    "@sentry/cli",
+    "esbuild",
+    "nx",
+    "puppeteer",
+    "sharp"
+  ]
 }
