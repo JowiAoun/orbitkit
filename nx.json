@@ -74,12 +74,12 @@
         "{projectRoot}/.env"
       ]
     },
-    "db:migrate": {
+    "migrate": {
       "dependsOn": ["db:generate"],
       "inputs": ["{projectRoot}/drizzle/**"],
       "cache": true
     },
-    "db:generate": {
+    "generate": {
       "inputs": [
         "{projectRoot}/src/schema/**",
         "{projectRoot}/drizzle.config.ts"
@@ -87,22 +87,22 @@
       "outputs": ["{workspaceRoot}/drizzle/**"],
       "cache": true
     },
-    "db:studio": {
+    "studio": {
       "cache": false
     },
-    "db:check": {
+    "check": {
       "cache": false
     },
-    "db:migrate:drop": {
+    "migrate:drop": {
       "cache": false
     },
-    "db:pull": {
+    "pull": {
       "cache": false
     },
-    "db:push": {
+    "push": {
       "cache": false
     },
-    "db:up": {
+    "up": {
       "cache": false
     },
     "clean": {

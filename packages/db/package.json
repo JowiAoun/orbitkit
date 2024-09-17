@@ -19,18 +19,18 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
+    "check": "drizzle-kit check",
     "clean": "bun run rm -rf dist *.tsbuildinfo",
-    "db:check": "drizzle-kit check",
-    "db:generate": "drizzle-kit generate",
-    "db:migrate": "drizzle-kit migrate",
-    "db:migrate:drop": "drizzle-kit drop",
-    "db:pull": "drizzle-kit introspect",
-    "db:push": "drizzle-kit push",
-    "db:studio": "drizzle-kit studio",
-    "db:up": "drizzle-kit up",
     "dev": "tsc -w -p tsconfig.build.json",
+    "generate": "drizzle-kit generate",
     "lint": "eslint .  --max-warnings 0",
-    "typecheck": "tsc"
+    "migrate": "drizzle-kit migrate",
+    "migrate:drop": "drizzle-kit drop",
+    "pull": "drizzle-kit introspect",
+    "push": "drizzle-kit push",
+    "studio": "drizzle-kit studio",
+    "typecheck": "tsc",
+    "up": "drizzle-kit up"
   },
   "dependencies": {
     "@neondatabase/serverless": "^0.9.4",
