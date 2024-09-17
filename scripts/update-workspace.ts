@@ -63,14 +63,7 @@ const includeRoot = argv['include-root']
 // Record to store updated package names
 const updatedPackages: Record<string, string> = {}
 
-const ignoredFolders = [
-  'node_modules',
-  '.next',
-  '.turbo',
-  'dist',
-  'build',
-  '.git',
-]
+const ignoredFolders = ['node_modules', '.next', '.nx', 'dist', 'build', '.git']
 const ignoredFiles = ['package.json', 'bun.lockb']
 
 // ------------------------------------------------------------------
@@ -283,7 +276,7 @@ if (newNamespace) {
   await findAndReplacePackageNames()
 
   // Done
-  await $`bun format && bun turbo clean && bun install`
+  await $`bun format && bun nx run-many -t clean && bun install`
 
   console.log(
     '🎉 Done! Workspace namespaces have successfully been updated. You may wish to reload your IDE, to remove any errors.',

@@ -5,7 +5,6 @@ import prettierConfig from 'eslint-config-prettier'
 import jsdoc from 'eslint-plugin-jsdoc'
 import * as regexpPlugin from 'eslint-plugin-regexp'
 import pluginSecurity from 'eslint-plugin-security'
-import turboPlugin from 'eslint-plugin-turbo'
 import globals from 'globals'
 import tseslint from 'typescript-eslint'
 
@@ -13,7 +12,7 @@ import { compat, defineConfig } from '../utils.js'
 
 export const base = defineConfig(
   {
-    ignores: ['.next', '.astro', 'dist', 'storybook-static'],
+    ignores: ['.nx', '.next', '.astro', 'dist', 'storybook-static'],
   },
 
   // Base JS/TS configs
@@ -26,9 +25,7 @@ export const base = defineConfig(
   regexpPlugin.configs['flat/recommended'],
   pluginSecurity.configs.recommended,
   {
-    plugins: {
-      turbo: turboPlugin,
-    },
+    plugins: {},
   },
 
   // Tailwind plugin
@@ -66,7 +63,6 @@ export const base = defineConfig(
       },
     },
     rules: {
-      ...turboPlugin.configs.recommended.rules,
       '@typescript-eslint/no-unused-vars': [
         'error',
         { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
