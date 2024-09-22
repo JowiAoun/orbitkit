@@ -4,46 +4,52 @@ icon: 'code'
 description: 'A guide on the available commands in the project, what they do and how to use them.'
 ---
 
+<Tip>
+  To view commands for projects and libraries, open the Nx dependency graph with
+  `bun nx graph`. Click on an app or library, then the top right button to view
+  all its tasks.
+</Tip>
+
 <Note>
-  OrbitKit uses Turborepo to run commands across apps & packages in the
-  monorepo, you can also use `bun --filter` commands to do the same without
-  dependant tasks running or caching.
+  OrbitKit uses Nx to run commands across apps & packages in the monorepo, you
+  can also use `bun --filter` commands to do the same without dependant tasks
+  running or caching.
 </Note>
 
 ## `dev`
 
 ```bash
-bun turbo dev
+bun run dev
 ```
 
 The `dev` command starts up all of the apps in the monorepo in development mode and also starts up the watch mode on the packages that need bundling.
 
 The `dev` command also applies Drizzle ORM schema migrations to the database, it will generate any missing migrations and apply them to the database.
 
-You can start up for example only the web application by using `bun turbo dev --filter=@orbitkit/web`.
+You can start up for example only the web application by using `bun nx run @orbitkit/web:dev`.
 
 ## `build`
 
 ```bash
-bun turbo build
+bun run build
 ```
 
 The `build` command builds all of the apps in the monorepo and also builds the packages that need bundling.
 
-You can build for example only the web application by using `bun turbo build --filter=@orbitkit/web`.
+You can build for example only the web application by using `bun nx run @orbitkit/web:build`.
 
 ## `start`
 
 ```bash
-bun turbo start
+bun run start
 ```
 
-The `start` command starts up all of the apps in the monorepo in production mode. This is done after building all of the apps & packages automatically via turborepo dependant tasks, so you don't need to build before you run the start command.
+The `start` command starts up all of the apps in the monorepo in production mode. This is done after building all of the apps & packages automatically via Nx dependant tasks, so you don't need to build before you run the start command.
 
 ## `lint`
 
 ```bash
-bun turbo lint
+bun run lint
 ```
 
 The `lint` command runs ESLint on all of the apps & packages in the monorepo.
@@ -51,7 +57,7 @@ The `lint` command runs ESLint on all of the apps & packages in the monorepo.
 ## `typecheck`
 
 ```bash
-bun turbo typecheck
+bun run typecheck
 ```
 
 The `typecheck` command runs TypeScript type checking on all of the apps & packages in the monorepo.
@@ -59,7 +65,7 @@ The `typecheck` command runs TypeScript type checking on all of the apps & packa
 ## `storybook`
 
 ```bash
-bun turbo storybook
+bun nx run @orbitkit/storybook:dev
 ```
 
 The `storybook` command starts up the `ui` package storybook instance in dev mode.
@@ -67,7 +73,7 @@ The `storybook` command starts up the `ui` package storybook instance in dev mod
 ## `build-storybook`
 
 ```bash
-bun turbo build-storybook
+bun nx run @orbitkit/storybook:build
 ```
 
 The `build-storybook` command builds the `ui` package storybook application, you will find the output in a `storybook-static` in the `packages/ui` directory.
@@ -75,7 +81,7 @@ The `build-storybook` command builds the `ui` package storybook application, you
 ## `db:generate`
 
 ```bash
-bun turbo db:generate
+bun nx run @orbitkit/db:generate
 ```
 
 The `db:generate` command will generate new schema migration files when necessary (based on the typescript schema files in `packages/db/src/schema` directory).
@@ -83,7 +89,7 @@ The `db:generate` command will generate new schema migration files when necessar
 ## `db:migrate`
 
 ```bash
-bun turbo db:generate
+bun nx run @orbitkit/db:migrate
 ```
 
 The `db:migrate` command will apply all of the schema migrations to the database.
@@ -92,4 +98,4 @@ The `db:migrate` command will apply all of the schema migrations to the database
 
 OrbitKit supports all of [DrizzleKit's commands](https://orm.drizzle.team/kit-docs/commands) which are all configured for you in the `packages/db/package.json` file.
 
-You can invoke these commands using `bun`, for example to check for collisions and inconsistencies between your database and the schema, you can run `bun --filter @orbitkit/db db:check`.
+You can invoke these commands using `bun`, for example to check for collisions and inconsistencies between your database and the schema, you can run `bun --filter @orbitkit/db check`.

@@ -28,7 +28,7 @@ Orbitkit uses bun workspaces, so you should **always run `bun install` from the 
 ```shell
 git clone && cd ...
 bun install
-bun turbo build
+bun run build
 ```
 
 ### Setting up environment variables
@@ -49,25 +49,25 @@ Your new codespace will open in a web-based version of Visual Studio Code. All d
 
 ```shell
 # Dev
-bun turbo dev
+bun run dev
 
 # Build
-bun turbo build
+bun run build
 
 # Typecheck
-bun turbo typecheck
+bun nx run-many -t typecheck
 
 # Lint
-bun turbo lint
+bun nx run-many -t lint
 
 # Storybook
-bun turbo storybook
+bun nx run @orbitkit/ui:storybook
 
 # Start apps in production mode
-bun turbo start
+bun run start
 ```
 
-If you're familiar with turborepo / bun workspaces, running stuff around this repo will be easy to figure out.
+If you're familiar with Nx / bun workspaces, running stuff around this repo will be easy to figure out.
 
 ### Other useful commands
 

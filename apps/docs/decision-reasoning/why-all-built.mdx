@@ -77,7 +77,7 @@ This is because:
 
 - We intend to let the `ui` package be easily published to NPM, without putting any assumptions over the consumer and that it might be, this is why a bundling step was beneficial here.
 - The `env` package is only used internally to validate environment variables using `t3-env`, the TS LSP footprint is not a concern here and hence, we can ship out the source code directly.
-- All other packages are compiled with `tsc` because they are used internally and we want to keep the TS LSP footprint low, we can use a combination of the awesome turborepo filtering to minimise the `dev` watch processes running while development.
+- All other packages are compiled with `tsc` because they are used internally and we want to keep the TS LSP footprint low, we can use a combination of the awesome Nx filtering to minimise the `dev` watch processes running while development.
 
 In short, `tsc` was the best of both worlds, we get the security of knowing that we will have a fast TS LSP even with a growing codebase, and we get all of the benefits of internal packages like go to definition, etc.
 
@@ -89,7 +89,7 @@ To minimise the amount of processes running during dev we can do something like:
 This looks something like this, if we were to be making api changes for example:
 
 ```bash
-bun turbo dev --filter=@orbitkit/web... --filter=!./packages/config/* --filter=!@orbitkit/ui --only
+bun nx run-many --target=dev --projects=@orbitkit/web --exclude=packages-config --exclude=@orbitkit/ui
 ```
 
 It is true that this is a really long command, but we can make it shorter by adding it to the root `package.json` scripts like so:
@@ -97,7 +97,7 @@ It is true that this is a really long command, but we can make it shorter by add
 ```json
 {
   "scripts": {
-    "dev:web:api": "bun turbo dev --filter=@orbitkit/web... --filter=!./packages/config/* --filter=!@orbitkit/ui --only"
+    "dev:web:api": "bun nx run-many --target=dev --projects=@orbitkit/web --exclude=packages-config --exclude=@orbitkit/ui"
   }
 }
 ```

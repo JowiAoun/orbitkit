@@ -17,7 +17,7 @@
 - [**Sentry**](https://sentry.io): for error tracking and monitoring.
 - [**tRPC**](https://trpc.io) for a fully type-safe api.
 - [**Mintlify**](https://mintlify.com): for a clean, fast, and easy to use platform to document your project.
-- [**Turborepo**](https://turbo.build/repo): caching builds so you never have to run the same command twice.
+- [**Nx**](https://nx.dev/): caching builds so you never have to run the same command twice.
 - [**Drizzle ORM**](https://orm.drizzle.team): providing a fully type-safe way to interact with your database.
 - [**Neon DB**](https://neon.tech): serverless database, with autoscaling, branching, and bottomless storage.
 - [**Uploadthing**](https://uploadthing.com/): for an easy, type-safe way of handling file uploads.
