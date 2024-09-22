@@ -57,5 +57,17 @@
     "postcss": "^8.4.39",
     "tailwindcss": "^3.4.6"
   },
-  "nx": {}
+  "nx": {
+    "plugins": [
+      {
+        "plugin": "@nx/next/plugin",
+        "options": {
+          "startTargetName": "start",
+          "buildTargetName": "build",
+          "devTargetName": "dev",
+          "serveStaticTargetName": "serve-static"
+        }
+      }
+    ]
+  }
 }
