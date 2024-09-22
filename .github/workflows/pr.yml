@@ -2,11 +2,6 @@ name: Pull Request CI
 
 on: [pull_request]
 
-env:
-  # This enables turborepo's remote task caching
-  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-  TURBO_TEAM: ${{ vars.TURBO_TEAM }}
-
 jobs:
   spell-and-md-lint:
     name: Spellcheck and Markdown Lint
@@ -22,7 +17,7 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Checks
-        run: bun turbo lint:md lint:spell
+        run: bun nx run-many -t lint:md lint:spell
 
   web:
     name: Web CI
@@ -91,7 +86,7 @@ jobs:
           echo "DATABASE_URL=${{ steps.create-branch.outputs.db_url }}?sslmode=require" >> $GITHUB_ENV
 
       - name: Checks
-        run: bun turbo lint typecheck build test:e2e --filter=@orbitkit/web
+        run: bun nx run-many -t lint typecheck build test:e2e -p @orbitkit/web
 
       - uses: actions/upload-artifact@v4
         if: always()
@@ -125,4 +120,4 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Checks
-        run: bun turbo lint typecheck build test:e2e --filter=@orbitkit/marketing
+        run: bun nx run-many -t lint typecheck build test:e2e -p @orbitkit/marketing
