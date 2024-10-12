@@ -1,0 +1,25 @@
+import { Canvas, Meta, Source } from '@storybook/blocks'
+
+import * as StackStories from './stack.stories'
+
+<Meta of={StackStories} />
+
+# Stack
+
+A responsive stack component.
+
+## Preview
+
+<Canvas of={StackStories.Default} />
+
+## Usage
+
+export const importCode = `import {
+  Stack,
+  StackCell,
+} from "@orbitkit/ui/stack";`
+
+export const usageCode = `W.I.P.`
+
+<Source code={importCode} language='ts' dark />
+<Source code={usageCode} language='tsx' dark />
