@@ -24,6 +24,7 @@
     "release": "bun nx run-many -t build lint typecheck && changeset version && changeset publish",
     "reset:changelog": "bun run rm -rf */**/CHANGELOG.md",
     "start": "bun nx run-many -t start -p @orbitkit/web @orbitkit/marketing",
+    "storybook": "bun nx run @orbitkit/storybook:build && bun nx run @orbitkit/vite:build && bun nx run @orbitkit/ui:storybook",
     "test:e2e": "bun nx run-many -t test:e2e",
     "typecheck": "tsc",
     "update:workspace": "bun run ./scripts/update-workspace"
