@@ -2,11 +2,24 @@ import type { Preview } from '@storybook/react'
 
 import type {} from '@storybook/types'
 
+import { useEffect } from 'react'
+
+import type { ReactRenderer } from '@storybook/react'
+
+import { MantineProvider, useMantineColorScheme } from '@mantine/core'
 import { withThemeByClassName } from '@storybook/addon-themes'
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
-import { type ReactRenderer } from '@storybook/react'
+import { addons } from '@storybook/preview-api'
+import { DARK_MODE_EVENT_NAME } from 'storybook-dark-mode'
 
-import theme from './theme'
+// Import Mantine styles
+import '@mantine/core/styles.css'
+
+import { theme as mantineTheme } from '../src/theme'
+// Import your themes
+import { theme } from './theme'
+
+const channel = addons.getChannel()
 
 const customViewports = {
   '720p': {
@@ -46,7 +59,21 @@ const customViewports = {
   },
 }
 
-const preview = {
+function ColorSchemeWrapper({ children }: { children: React.ReactNode }) {
+  const { setColorScheme } = useMantineColorScheme()
+
+  const handleColorScheme = (value: boolean) =>
+    setColorScheme(value ? 'dark' : 'light')
+
+  useEffect(() => {
+    channel.on(DARK_MODE_EVENT_NAME, handleColorScheme)
+    return () => channel.off(DARK_MODE_EVENT_NAME, handleColorScheme)
+  }, [])
+
+  return <>{children}</>
+}
+
+const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
@@ -66,6 +93,7 @@ const preview = {
     },
   },
   decorators: [
+    // Existing theme decorator
     withThemeByClassName<ReactRenderer>({
       themes: {
         light: 'light',
@@ -73,7 +101,18 @@ const preview = {
       },
       defaultTheme: 'dark',
     }),
+    // Mantine decorators
+    (Story: any) => (
+      <ColorSchemeWrapper>
+        <Story />
+      </ColorSchemeWrapper>
+    ),
+    (Story: any) => (
+      <MantineProvider theme={mantineTheme}>
+        <Story />
+      </MantineProvider>
+    ),
   ],
-} satisfies Preview
+}
 
 export default preview

@@ -5,6 +5,7 @@ import { getAbsolutePath } from '@orbitkit/utils/filesystem'
 const config = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   addons: [
+    'storybook-dark-mode',
     getAbsolutePath('@storybook/addon-links'),
     {
       name: getAbsolutePath('@storybook/addon-essentials'),
