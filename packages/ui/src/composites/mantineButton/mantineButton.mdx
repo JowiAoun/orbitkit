@@ -1,0 +1,95 @@
+import { Canvas, Controls, Meta, Source } from '@storybook/blocks'
+
+import * as MantineButtonStories from './mantineButton.stories'
+
+<Meta of={MantineButtonStories} />
+
+# MantineButton
+
+A mantine button component from Mantine that supports multiple variants, sizes, and states.
+
+## Preview
+
+<Canvas of={MantineButtonStories.Primary} />
+
+<Controls of={MantineButtonStories.Primary} />
+
+## Usage
+
+<Source
+  code={`import { MantineButton } from '@mantine/core';
+
+export function Demo() {
+  return <Button>Click me</Button>;
+}`}
+  language="tsx"
+  dark
+/>
+
+## Examples
+
+### Primary Button
+
+<Canvas of={MantineButtonStories.Primary} />
+
+### Secondary Button
+
+<Canvas of={MantineButtonStories.Secondary} />
+
+### Outline Button
+
+<Canvas of={MantineButtonStories.Outline} />
+
+### Subtle Button
+
+<Canvas of={MantineButtonStories.Subtle} />
+
+### Transparent Button
+
+<Canvas of={MantineButtonStories.Transparent} />
+
+### Gradient Button
+
+<Canvas of={MantineButtonStories.Gradient} />
+
+### Button with Icon
+
+<Canvas of={MantineButtonStories.WithIcon} />
+
+### Icon Only Button
+
+<Canvas of={MantineButtonStories.IconOnly} />
+
+### Loading State
+
+<Canvas of={MantineButtonStories.Loading} />
+
+### Custom Loader
+
+<Canvas of={MantineButtonStories.CustomLoader} />
+
+### Disabled State
+
+<Canvas of={MantineButtonStories.Disabled} />
+
+### Full Width
+
+<Canvas of={MantineButtonStories.FullWidth} />
+
+## Props
+
+The Mantine Button component accepts all the props from the native button element and the following props:
+
+- `variant`: Defines the button's appearance ('filled', 'light', 'outline', 'transparent', 'white', 'subtle', 'default', 'gradient')
+- `size`: Controls the button's size ('xs', 'sm', 'md', 'lg', 'xl')
+- `color`: Sets the button's color theme
+- `radius`: Controls the border-radius ('xs', 'sm', 'md', 'lg', 'xl')
+- `loading`: Shows a loading spinner
+- `loaderProps`: Customizes the loader component
+- `leftSection`: Adds content before the button label
+- `rightSection`: Adds content after the button label
+- `fullWidth`: Makes the button take up 100% of container width
+- `disabled`: Disables the button
+- `gradient`: Configures the gradient when variant is set to 'gradient'
+
+For more detailed documentation, visit the [Mantine Button documentation](https://mantine.dev/core/button).
