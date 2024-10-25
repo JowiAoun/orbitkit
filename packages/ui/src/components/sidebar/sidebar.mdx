@@ -1,0 +1,41 @@
+import { Canvas, Controls, Meta, Source } from '@storybook/blocks'
+
+import { RadixPrimitiveDocsButton } from '../../storybook-utils/primitive-docs-button'
+import * as SidebarStories from './sidebar.stories'
+
+<Meta of={SidebarStories} />
+
+<RadixPrimitiveDocsButton name='sidebar' />
+
+# Sidebar
+
+A composable, themeable and customizable sidebar component.
+
+## Preview
+
+<Canvas of={SidebarStories.Single} />
+
+<Controls />
+
+## Usage
+
+export const importCode = `import {
+  Sidebar,
+} from "@orbitkit/ui/sidebar";`
+
+export const usageCode = `<SidebarProvider {...args}>
+      <Sidebar>
+        <SidebarHeader />
+        <SidebarContent>
+          <SidebarGroup />
+            <main>
+              <SidebarTrigger />
+              Cool!
+            </main>
+          <SidebarGroup />
+        </SidebarContent>
+        <SidebarFooter />
+      </Sidebar>
+    </SidebarProvider>`
+
+<Source code={importCode} language='ts' dark />
