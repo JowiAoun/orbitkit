@@ -16,7 +16,7 @@ const withBundleAnalyzer = bundleAnalyzerPlugin({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  transpilePackages: ['@orbitkit/env'],
+  transpilePackages: ['@orbitkit/env', '@orbitkit/emails'],
   eslint: {
     ignoreDuringBuilds: true,
   },
